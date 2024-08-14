@@ -168,6 +168,16 @@ export default function Generate() {
               </Grid>
             ))}
           </Grid>
+          <Box sx={{ my: 4 }}>
+            <Button
+              sx={{ width: "100%" }}
+              variant="contained"
+              color="secondary"
+              onClick={handleOpen}
+            >
+              Save
+            </Button>
+          </Box>
         </Box>
       )}
       <Dialog open={open} onClose={handleClose}>
