@@ -11,6 +11,11 @@ import {
   Grid,
   CardActionArea,
   CardContent,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  DialogActions,
 } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -112,7 +117,7 @@ export default function Generate() {
           <Typography variant="h5">Flashcards Preview</Typography>
           <Grid container spacing={3}>
             {flashcards.map((flashcard, i) => (
-              <Grid item key={i}>
+              <Grid item key={i} xs={12} sm={6} md={4}>
                 <CardActionArea onClick={() => handleCardClick(i)}>
                   <CardContent>
                     <Box
@@ -129,16 +134,30 @@ export default function Generate() {
                             ? "rotateY(180deg)"
                             : "rotateY(0deg)",
                         },
+                        "& > div > div": {
+                          position: "absolute",
+                          width: "100%",
+                          height: "100%",
+                          backfaceVisibility: "hidden",
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          padding: 2,
+                          boxSizing: "border-box",
+                        },
+                        "& > div > div:nth-of-type(2)": {
+                          transform: "rotateY(180deg)",
+                        },
                       }}
                     >
                       <div>
                         <div>
-                          <Typography vairant="h5" component="div">
+                          <Typography variant="h5" component="div">
                             {flashcard.front}
                           </Typography>
                         </div>
                         <div>
-                          <Typography vairant="h5" component="div">
+                          <Typography variant="h5" component="div">
                             {flashcard.back}
                           </Typography>
                         </div>
@@ -151,6 +170,26 @@ export default function Generate() {
           </Grid>
         </Box>
       )}
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>Save Flashcards</DialogTitle>
+        <DialogContent>
+          <DialogContentText>Enter a name for collection</DialogContentText>
+          <TextField
+            autofocus
+            margin="dense"
+            label="Collection name"
+            type="text"
+            fullWidth
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            variant="outlined"
+          />{" "}
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={saveFlashcards}>Save</Button>
+        </DialogActions>
+      </Dialog>
     </Container>
   );
 }
