@@ -4,6 +4,6 @@
 Try it out for yourself! [https://____]
 
 ## Meet the Team
-Samuel Ou - [https://samuel-ou.com/]
-Mark John Tocino - [https://marktocinoportolio.vercel.app/]
-Godwins Tuyishime - [https://godwins.site/]
+[Samuel Ou](https://samuel-ou.com/)
+[Mark John Tocino](https://marktocinoportolio.vercel.app/)
+[Godwins Tuyishime](https://godwins.site/)
