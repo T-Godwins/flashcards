@@ -8,7 +8,7 @@ import {
   SignedOut,
   UserButton,
 } from "@clerk/nextjs";
-import { Button, Container, Head } from "@mui/material";
+import { Button, Container, Head, Box} from "@mui/material";
 export default function Home() {
   const handleSubmit = async () => {
     const checkoutSession = await fetch("/api/checkout_session", {
@@ -34,9 +34,11 @@ export default function Home() {
   };
   return (
     <Container maxWidth="lg">
+      <Box maxWidth="lg" bgcolor="grey" display="flex" justifyContent="space-between" p={3}>
       <a href="/generate">Generate New</a>
       <a href="/flashcards">Saved Flashcards</a>
       <Button onClick={handleSubmit}>STRIPE BUTTON</Button>
+      </Box>
     </Container>
   );
 }
