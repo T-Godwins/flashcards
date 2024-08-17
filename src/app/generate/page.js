@@ -1,6 +1,7 @@
 "use client";
 
 import { useUser } from "@clerk/nextjs";
+import Nav from "../nav/navbar";
 import {
   Box,
   Container,
@@ -89,6 +90,7 @@ export default function Generate() {
   };
   return (
     <Container maxWidth="md">
+      <Nav/>
       <Box
         sx={{
           mt: 4,
