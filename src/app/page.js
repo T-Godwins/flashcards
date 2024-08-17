@@ -34,7 +34,7 @@ export default function Home() {
     }
   };
   return (
-    <Container maxWidth="lg">
+    <div>
         <Nav/>
         <Box 
           width="100vw"
@@ -263,6 +263,6 @@ export default function Home() {
             </Card>
             </Box>
           </Box>
-    </Container>
+    </div>
   );
 }

@@ -89,7 +89,7 @@ export default function Generate() {
     router.push("/flashcards");
   };
   return (
-    <Container maxWidth="md">
+    <div>
       <Nav/>
       <Box
         sx={{
@@ -210,6 +210,6 @@ export default function Generate() {
           <Button onClick={saveFlashcards}>Save</Button>
         </DialogActions>
       </Dialog>
-    </Container>
+    </div>
   );
 }

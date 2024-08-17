@@ -53,7 +53,7 @@ export default function Flashcards() {
   };
 
   return (
-    <Container maxwidth="100vw">
+    <div >
       <Nav/>
       <Grid container spacing={3} sx={{ mt: 4 }}>
         {flashcards.map((flashcard, i) => (
@@ -68,6 +68,6 @@ export default function Flashcards() {
           </Grid>
         ))}
       </Grid>
-    </Container>
+    </div>
   );
 }
