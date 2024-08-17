@@ -1,5 +1,6 @@
 "use client";
 
+import Nav from "../nav/navbar";
 import { useUser } from "@clerk/nextjs";
 import { useEffect, useState } from "react";
 import { db } from "../firebase";
@@ -53,6 +54,7 @@ export default function Flashcards() {
 
   return (
     <Container maxwidth="100vw">
+      <Nav/>
       <Grid container spacing={3} sx={{ mt: 4 }}>
         {flashcards.map((flashcard, i) => (
           <Grid key={i} item xs={12} sm={6} md={4}>
