@@ -13,6 +13,7 @@ import {
 } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 import {
+  Box,
   Card,
   CardActionArea,
   CardContent,
@@ -54,20 +55,35 @@ export default function Flashcards() {
 
   return (
     <div >
+      <Box sx={{
+          backgroundImage:`url('/17580.jpg')`,
+          backgroundSize:'cover',
+          backgroundPosition:'center',
+          backgroundRepeat:'repeat-y'
+        }}>
       <Nav/>
-      <Grid container spacing={3} sx={{ mt: 4 }}>
-        {flashcards.map((flashcard, i) => (
-          <Grid key={i} item xs={12} sm={6} md={4}>
-            <Card>
-              <CardActionArea onClick={() => handleClick(flashcard.name)}>
-                <CardContent>
-                  <Typography variant="h6">{flashcard.name}</Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
+      <Box 
+        width="100vw"
+        height="100vh"
+        // bgcolor="#F5F5F5"
+        display="flex"
+        justifyContent="center"
+        p={10}>
+        <Grid container spacing={3} sx={{ mt: 4 }}>
+          {flashcards.map((flashcard, i) => (
+            <Grid key={i} item xs={12} sm={6} md={4}>
+              <Card>
+                <CardActionArea onClick={() => handleClick(flashcard.name)} >
+                  <CardContent>
+                    <Typography variant="h6">{flashcard.name}</Typography>
+                  </CardContent>
+                </CardActionArea>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      </Box>
+      </Box>
     </div>
   );
 }

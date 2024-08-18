@@ -4,6 +4,7 @@ import { useUser } from "@clerk/nextjs";
 import Nav from "../nav/navbar";
 import {
   Box,
+  Stack,
   Container,
   Typography,
   Paper,
@@ -90,22 +91,34 @@ export default function Generate() {
   };
   return (
     <div>
+      <Box sx={{
+          backgroundImage:`url('/17580.jpg')`,
+          backgroundSize:'cover',
+          backgroundPosition:'center',
+          backgroundRepeat:'repeat-y'
+        }}>
       <Nav/>
+      <Box 
+        width="100vw"
+        height="150vh"
+        
+        p={10}>
+      
       <Box
         sx={{
-          mt: 4,
-          mb: 6,
+          mt: {lg:4, xs:0},
+          mb: {lg:6, xs:0},
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
         }}
       >
-        <Typography variant="h4">Generate Flashcards</Typography>
-        <Paper sx={{ p: 4, width: "100%" }}>
+        <Typography variant="h4" align="center">Generate Flashcards</Typography>
+        <Stack sx={{ p: {lg:4, xs:1}, width:{md:"60%", xs:"180%"}}} spacing={2}>
           <TextField
             value={text}
             onChange={(e) => setText(e.target.value)}
-            label="enter text"
+            label="Enter topics or notes you would like to study!"
             fullWidth
             multiline
             rows={4}
@@ -115,16 +128,25 @@ export default function Generate() {
             variant="contained"
             color="primary"
             onClick={handleSubmit}
-            fullWidth
+            width="200px"
+            sx={{
+              borderRadius: "50px",
+              bgcolor: "black",
+              color: "white",
+              "&:hover": {
+                bgcolor: "rgba(1, 1, 1, 0.7)",
+                color: "white",
+              },
+            }}
           >
             Submit
           </Button>
-        </Paper>
+        </Stack>
       </Box>
 
       {flashcards.length > 0 && (
         <Box>
-          <Typography variant="h5">Flashcards Preview</Typography>
+          <Typography variant="h4" align="center">Flashcards Preview</Typography>
           <Grid container spacing={3}>
             {flashcards.map((flashcard, i) => (
               <Grid item key={i} xs={12} sm={6} md={4}>
@@ -132,6 +154,8 @@ export default function Generate() {
                   <CardContent>
                     <Box
                       sx={{
+                        bgcolor:"white",
+                        borderRadius:"20px",
                         perspective: "1000px",
                         "& > div": {
                           transition: "transform 0.6s",
@@ -143,9 +167,11 @@ export default function Generate() {
                           transform: flipped[i]
                             ? "rotateY(180deg)"
                             : "rotateY(0deg)",
+                            borderRadius:"20px",
                         },
                         "& > div > div": {
                           position: "absolute",
+                          borderRadius:"20px",
                           width: "100%",
                           height: "100%",
                           backfaceVisibility: "hidden",
@@ -162,12 +188,12 @@ export default function Generate() {
                     >
                       <div>
                         <div>
-                          <Typography variant="h5" component="div">
+                          <Typography variant="h5" component="div" align="center">
                             {flashcard.front}
                           </Typography>
                         </div>
                         <div>
-                          <Typography variant="h5" component="div">
+                          <Typography variant="h5" component="div" align="center">
                             {flashcard.back}
                           </Typography>
                         </div>
@@ -178,9 +204,16 @@ export default function Generate() {
               </Grid>
             ))}
           </Grid>
-          <Box sx={{ my: 4 }}>
+          <Box display="flex"
+              justifyContent="center"sx={{ my: 4 }}>
             <Button
-              sx={{ width: "100%" }}
+              sx={{ width: "45%", borderRadius: "50px",
+                bgcolor: "black",
+                "&:hover": {
+                  bgcolor: "rgba(1, 1, 1, 0.7)",
+                  color: "white",
+                },
+              }}
               variant="contained"
               color="secondary"
               onClick={handleOpen}
@@ -210,6 +243,8 @@ export default function Generate() {
           <Button onClick={saveFlashcards}>Save</Button>
         </DialogActions>
       </Dialog>
+      </Box>
+      </Box>
     </div>
   );
 }

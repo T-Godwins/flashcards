@@ -1,5 +1,6 @@
 "use client";
 
+import Nav from "../nav/navbar";
 import { useUser } from "@clerk/nextjs";
 import { useEffect, useState } from "react";
 import {
@@ -54,17 +55,33 @@ export default function FlashcardSet() {
     setFlipped((prev) => ({ ...prev, [id]: !prev[id] }));
   };
   return (
-    <Container maxWidth="md">
+    <div>
+      <Box sx={{
+          backgroundImage:`url('/17580.jpg')`,
+          backgroundSize:'cover',
+          backgroundPosition:'center',
+          backgroundRepeat:'repeat-y'
+        }}>
+      <Nav/>
       {flashcards.length > 0 && (
-        <Box>
+        <Box 
+        width="100vw"
+        height="100vh"
+        // bgcolor="#F5F5F5"
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        p={0}>
           <Typography variant="h5">{search}</Typography>
-          <Grid container spacing={3}>
+          <Grid container spacing={3} sx={{paddingInline:"100px"}}>
             {flashcards.map((flashcard, i) => (
               <Grid item key={i} xs={12} sm={6} md={4}>
                 <CardActionArea onClick={() => handleCardClick(i)}>
                   <CardContent>
-                    <Box
+                  <Box
                       sx={{
+                        bgcolor:"white",
+                        borderRadius:"20px",
                         perspective: "1000px",
                         "& > div": {
                           transition: "transform 0.6s",
@@ -76,9 +93,11 @@ export default function FlashcardSet() {
                           transform: flipped[i]
                             ? "rotateY(180deg)"
                             : "rotateY(0deg)",
+                            borderRadius:"20px",
                         },
                         "& > div > div": {
                           position: "absolute",
+                          borderRadius:"20px",
                           width: "100%",
                           height: "100%",
                           backfaceVisibility: "hidden",
@@ -95,12 +114,12 @@ export default function FlashcardSet() {
                     >
                       <div>
                         <div>
-                          <Typography variant="h5" component="div">
+                          <Typography variant="h5" component="div" align="center">
                             {flashcard.front}
                           </Typography>
                         </div>
                         <div>
-                          <Typography variant="h5" component="div">
+                          <Typography variant="h5" component="div" align="center">
                             {flashcard.back}
                           </Typography>
                         </div>
@@ -133,6 +152,7 @@ export default function FlashcardSet() {
           <Button onClick={saveFlashcards}>Save</Button>
         </DialogActions>
       </Dialog> */}
-    </Container>
+      </Box>
+    </div>
   );
 }
