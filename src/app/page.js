@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+// import bg from "./public/17580.jpg"
 import getStripe from "@/utils/get-stripe";
 import {
   ClerkProvider,
@@ -35,39 +36,55 @@ export default function Home() {
   };
   return (
     <div>
-        <Nav/>
-        <Box 
-          width="100vw"
-          height="50vh"
-          display="flex"
-          flexDirection="column"
-          justifyContent="center"
-          alignItems="center"
-          bgcolor="#F7F7F7"
-          sx={{paddingBottom:"20px"}}
-          >
-          <Typography variant="h2" gutterBottom p={0} sx={{ textAlign:"center", fontSize: {xs:'2rem', md:'5rem', lg:'5rem'}}} >
-            Welcome to Flash.AI
-          </Typography>
-          <Typography variant="h7" gutterBottom p={1} sx={{ textAlign:"center", fontSize: {xs:'1rem', md:'2rem', lg:'2rem'}}} >
-            10x your studying effeciency with AI          
-          </Typography>
-          
-          <Button variant="contained"
-                sx={{
-                    borderRadius: '50px', 
-                    bgcolor:"black", 
-                    color:"white",
-                    "&:hover": {
-                        bgcolor: 'rgba(2, 2, 2, 0.7)',
-                        color: 'white',}
-                    }}
-                    ><a href="/generate">Get Started</a> 
-          </Button>
-          </Box>
+      <Box
+        sx={{
+          backgroundImage:`url('/17580.jpg')`,
+          backgroundSize:'cover',
+          backgroundPosition:'center',
+          backgroundRepeat:'repeat-y'
+        }}>
+        <Box>
+          <Nav/>
+          <Stack display="flex"
+              flexDirection="column">
+            <Box id="landing"
+              width="100vw"
+              sx={{
+                height:{md:"40vh", xs:"20vh"},
+                paddingTop:{xs:20}
+              }}
+              
+              display="flex"
+              flexDirection="column"
+              justifyContent="center"
+              alignItems="center"
+              // bgcolor="#F7F7F7"
+              paddingBottom={10}
 
-{/* Features */}
-<Box id="features"
+              >
+                <Typography variant="h1" p={0} sx={{ textAlign:"center", fontSize: {xs:'2rem', md:'5rem', lg:'7rem'}}} >
+                  Welcome to Flash.AI
+                </Typography>
+                <Typography variant="h7" gutterBottom p={1} sx={{ textAlign:"center", fontSize: {xs:'1rem', md:'2rem', lg:'3rem'}}} >
+                  10x your studying effeciency with AI          
+                </Typography>
+                
+                <Button variant="contained"
+                      sx={{
+                          fontSize:'1rem',
+                          borderRadius: '50px', 
+                          bgcolor:"black", 
+                          color:"white",
+                          "&:hover": {
+                              bgcolor: 'rgba(2, 2, 2, 0.7)',
+                              color: 'white',}
+                          }}
+                          ><a href="/generate">Get Started</a> 
+                </Button>
+             </Box>
+
+              {/* Features */}
+          <Box id="features"
           width="100vw"
           display="flex"
           flexDirection="column"
@@ -80,7 +97,10 @@ export default function Home() {
             <Box id="pricing-options"
               width="100vw"
               display="flex"
-              flexDirection="row"
+              sx={{
+                flexDirection:{md:"row", xs:"column"}
+              }}
+              
               justifyContent="center"
               alignItems="center"
               p={2}
@@ -93,7 +113,7 @@ export default function Home() {
                 alignItems="center"
                 maxWidth="400px"
                 minHeight="200px">
-                  <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                  <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom align="center">
                     Leverage the future
                   </Typography>
                   <Typography variant="h5" component="div" align="center">
@@ -149,14 +169,14 @@ export default function Home() {
           </Box>
 
           
-{/* Pricing */}
+              {/* Pricing */}
           <Box id="pricing"
           width="100vw"
           display="flex"
           flexDirection="column"
           justifyContent="center"
           alignItems="center"
-          bgcolor="#F7F7F7"
+          // bgcolor="#F7F7F7"
           p={2}>
             <Typography variant="h7" sx={{ textAlign:"center", fontSize: {xs:'1rem', md:'2rem', lg:'2rem'}}} >
               Pricing          
@@ -164,7 +184,9 @@ export default function Home() {
             <Box id="pricing-options"
               width="100vw"
               display="flex"
-              flexDirection="row"
+              sx={{
+                flexDirection:{md:"row", xs:"column"}
+              }}
               justifyContent="center"
               alignItems="center"
               p={2}
@@ -263,6 +285,13 @@ export default function Home() {
             </Card>
             </Box>
           </Box>
+          </Stack>
+          <Typography sx={{fontSize:"5px"}}>
+          <a href="https://www.freepik.com/free-vector/elegant-white-background-with-shiny-lines_4077186.htm#fromView=search&page=1&position=19&uuid=d388ce45-9840-4e72-a2bc-f77d03287369">Image by starline on Freepik</a>
+          </Typography>
+          
+        </Box>
+      </Box>
     </div>
   );
 }
